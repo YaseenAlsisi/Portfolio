@@ -128,13 +128,10 @@ nav {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   nav {
-    top: 12px;
-    width: calc(100% - 24px);
-    left: 12px;
-    padding: 10px 16px;
-    gap: 10px;
+    padding: 12px 16px;
+    gap: 14px;
   }
 }
 
@@ -208,28 +205,41 @@ html[data-theme="light"] nav {
 @media (max-width: 640px) {
   nav {
     top: 12px;
-    width: calc(100% - 24px);
-    left: 12px;
-    padding: 10px 12px;
-    gap: 10px;
+    width: calc(100% - 20px);
+    left: 10px;
+    padding: 12px 14px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
   }
 
   .nav-logo {
     order: 1;
-    flex-basis: 100%;
+    flex-basis: auto;
     text-align: center;
+    font-size: 1.1rem;
   }
 
   .hamburger {
     order: 2;
-    padding: 6px;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2px;
   }
 
   .theme-toggle {
     order: 3;
-    margin-left: auto;
+    margin-left: 0;
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+    flex-shrink: 0;
   }
 
   .nav-links {
@@ -237,18 +247,74 @@ html[data-theme="light"] nav {
     flex-basis: 100%;
     display: none;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 8px;
+    gap: 10px;
+    margin-top: 10px;
     width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px 10px;
+    border-radius: 8px;
+    align-items: flex-start;
   }
 
   .nav-links.active {
     display: flex;
   }
 
+  .nav-links li {
+    width: 100%;
+  }
+
   .nav-links a {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(79, 142, 247, 0.12);
+    color: var(--accent);
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    top: 10px;
+    left: 8px;
+    width: calc(100% - 16px);
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .hamburger {
+    padding: 6px;
+  }
+
+  .hamburger span {
+    width: 20px;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.88rem;
+  }
+
+  .nav-links {
+    margin-top: 8px;
+    padding: 10px 8px;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 0.68rem;
+    padding: 6px 8px;
   }
 }
 
@@ -270,6 +336,12 @@ html[data-theme="light"] nav {
 
 .nav-logo span {
   color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .nav-logo {
+    font-size: 1.15rem;
+  }
 }
 
 /* Links */
