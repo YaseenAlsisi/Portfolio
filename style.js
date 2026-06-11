@@ -1,31 +1,42 @@
-  // Custom cursor
+  // Custom cursor - disabled on mobile
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  let mx = 1000, my = 1000, rx = 1000, ry = 1000;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animateCursor() {
-    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-    rx += (mx - rx) * 1;
-    ry += (my - ry) * 1;
-    ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-    requestAnimationFrame(animateCursor);
+  
+  if (!isMobile) {
+    let mx = 1000, my = 1000, rx = 1000, ry = 1000;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+      rx += (mx - rx) * 1;
+      ry += (my - ry) * 1;
+      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+  } else {
+    // Hide cursor elements on mobile
+    cursor.style.display = 'none';
+    ring.style.display = 'none';
+    document.body.style.cursor = 'auto';
   }
-  animateCursor();
 
-// Project card tilt
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty(
-      "--mx",
-      ((e.clientX - r.left) / r.width) * 100 + "%",
-    );
-    card.style.setProperty(
-      "--my",
-      ((e.clientY - r.top) / r.height) * 100 + "%",
-    );
+// Project card tilt - disabled on mobile
+if (!isMobile) {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty(
+        "--mx",
+        ((e.clientX - r.left) / r.width) * 100 + "%",
+      );
+      card.style.setProperty(
+        "--my",
+        ((e.clientY - r.top) / r.height) * 100 + "%",
+      );
+    });
   });
-});
+}
 
 // Scroll reveal
 const observer = new IntersectionObserver(
