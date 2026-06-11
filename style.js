@@ -42,3 +42,26 @@ const observer = new IntersectionObserver(
 document
   .querySelectorAll(".reveal, .timeline-item, .project-card")
   .forEach((el) => observer.observe(el));
+
+const themeToggle = document.getElementById('theme-toggle');
+const storedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (themeToggle) {
+    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+  }
+  localStorage.setItem('theme', theme);
+}
+
+if (themeToggle) {
+  applyTheme(initialTheme);
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+} else {
+  applyTheme(initialTheme);
+}

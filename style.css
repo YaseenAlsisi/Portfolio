@@ -11,6 +11,19 @@
   --glow: rgba(79, 142, 247, 0.15);
 }
 
+html[data-theme="light"] {
+  --bg: #12213b;
+  --surface: #1b2c52;
+  --surface2: #203662;
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #4f8ef7;
+  --accent2: #a5d8ff;
+  --accent3: #fca5a5;
+  --text: #e8edf5;
+  --muted: #b0c2e1;
+  --glow: rgba(79, 142, 247, 0.18);
+}
+
 *,
 *::before,
 *::after {
@@ -29,6 +42,7 @@ body {
   font-family: "DM Mono", monospace;
   overflow-x: hidden;
   cursor: none;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 /* Custom cursor */
@@ -101,6 +115,36 @@ nav {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="light"] nav {
+  background: rgba(22, 38, 67, 0.88);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* Logo */
