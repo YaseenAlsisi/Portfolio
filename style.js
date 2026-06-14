@@ -78,20 +78,20 @@ if (themeToggle) {
 }
 
 // Hamburger menu toggle
-const hamburger = document.getElementById('hamburger');
+const hamburger = document.getElementById('nav-hamburger');
 const navLinks = document.querySelector('.nav-links');
-
-if (hamburger) {
+if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    const isOpen = hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   });
-
-  // Close menu when a link is clicked
+  // Close menu when a nav link is clicked
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('active');
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'Open menu');
     });
   });
 }
