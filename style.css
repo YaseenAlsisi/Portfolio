@@ -1006,12 +1006,12 @@ footer {
     order: 1;
   }
 
-  .nav-hamburger {
-    display: flex;
+  .theme-toggle {
     order: 2;
   }
 
-  .theme-toggle {
+  .nav-hamburger {
+    display: flex;
     order: 3;
   }
 
