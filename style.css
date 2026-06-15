@@ -1008,6 +1008,7 @@ footer {
 
   .theme-toggle {
     order: 2;
+    margin-left: auto;
   }
 
   .nav-hamburger {
